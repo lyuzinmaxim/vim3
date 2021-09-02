@@ -3,7 +3,7 @@ Notes about deployment neural nets on Khadas VIM3
 
 Download last SDK version 
 ```
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1MVJIqkmc2YgXStx2MsYfYLqFJ12AwEua' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1MVJIqkmc2YgXStx2MsYfYLqFJ12AwEua" -O aml_npu_sdk_6.4.4.3.zip && rm -rf /tmp/cookies.txt
+git clone https://gitlab.com/khadas/aml_npu_sdk.git
 ```
 
 
@@ -37,10 +37,10 @@ Edit *requirements.txt* in ```~/aml_npu_sdk_6.4.4.3/acuity-toolkit```
 tensorflow=2.0.0 -> tensorflow=2.0.0a0
 
 ```
-cd aml_npu_sdk_6.4.4.3 && docker build -t aml:0.1 .
+cd aml_npu_sdk_6.4.4.3 && docker build -t khadas .
 ```
 ```
-docker run -it --name khadas -v ~/model:/model --privileged  --cap-add SYS_ADMIN aml
+docker run -it --name khadas -v ~/model:/model --privileged  --cap-add SYS_ADMIN khadas
 ```
 
 Some DOCKER tips:
