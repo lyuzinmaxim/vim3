@@ -28,6 +28,11 @@ docker pull numbqq/npu-sdk:latest
 ```
 
 2. Build own image with latest version (6.4.4.3) (not tried)
+
+Edit *requirements.txt* in ```~/aml_npu_sdk_6.4.4.3/acuity-toolkit``` 
+
+tensorflow=2.0.0 -> tensorflow=2.0.0a0
+
 ```
 cd aml_npu_sdk_6.4.4.3 && docker build -t aml:0.1 .
 ```
