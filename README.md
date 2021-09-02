@@ -114,14 +114,15 @@ Infere on ?image?
 ./bin/tensorzonex \
 --action inference \
 --source text \
---source-file test.txt \
+--source-file /acuity-toolkit/archive/test.txt \
 --channel-mean-value '0 0 0 256' \
 --model-input yolov3.json \
 --model-data yolov3.data \
 --dtype quantized
 ```
 
-caused errors:
-```
-sudo apt install libjpeg9-dev
-```
+Extra materials:
+1. Here it's wrote, that should be used new version of SDK
+#https://forum.khadas.com/t/npu-sdk-6-4-4-3-release/12273/37
+2. sudo apt install libjpeg9-dev
+3. 
