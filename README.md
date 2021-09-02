@@ -111,7 +111,7 @@ Generating case files for inference
 Infere on ?image?
 
 ```
-./bin/tensorzonex
+./bin/tensorzonex \
 --action inference \
 --source text \
 --source-file test.txt \
