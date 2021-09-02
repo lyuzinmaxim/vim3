@@ -44,7 +44,9 @@ docker run -it --name khadas -v ~/model:/model --privileged  --cap-add SYS_ADMIN
 ```
 
 Some DOCKER tips:
-1. Show running images 
+(according to https://medium.com/codingthesmartway-com-blog/docker-beginners-guide-part-1-images-containers-6f3507fffc98)
+
+1. Show stopped but existing images 
 ```
 docker ps -a 
 ```
@@ -52,20 +54,20 @@ docker ps -a
 ```
 docker rm {}
 ```
-
+3. Start stopped container (and after **cd** command in container)
+```
+docker start {container name} -i
+```
 
 # SDK workflow:
+
+Make an intermediate file with *.json* and *.data* format
 
 ```
 cd /acuity-toolkit && ./bin/convertdarknet --net-input /model/yolov3.cfg \
 --weight-input /model/yolov3_24_feb_best.weights \
 --data-output yolov3.data \
 --net-output yolov3.json
-```
-
-
-```
-cd /acuity-toolkit && ./bin/convertdarknet --net-input /model/yolov3.cfg --weight-input /model/yolov3_24_feb_best.weights --data-output yolov3.data --net-output yolov3.json
 ```
 
 Download small quantization dataset:
@@ -76,6 +78,8 @@ cd /acuity-toolkit && gdown https://drive.google.com/uc?id=1310_XNWwHWhJJiMs14UR
 unzip archive_aml2
 ```
 **ALL IMAGES SHOULD HAVE THE SAME RESOLUTION**
+
+Quantizing the model - output files: *.quantized*, *.data* 
 
 ```
 ./bin/tensorzonex --action quantization \
@@ -90,11 +94,9 @@ unzip archive_aml2
 --batch-size 2 \
 --epochs 50
 ```
+Generating case files for inference
 
-caused errors:
-```
-sudo apt install libjpeg9-dev
-```
+
 ```
 ./bin/ovxgenerator --model-input yolov3.json \
 --data-input yolov3.data \
@@ -104,4 +106,22 @@ sudo apt install libjpeg9-dev
 --optimize VIPNANOQI_PID0X88 \
 --viv-sdk ../bin/vcmdtools \
 --pack-nbg-unify
+```
+
+Infere on ?image?
+
+```
+./bin/tensorzonex
+--action inference \
+--source text \
+--source-file test.txt \
+--channel-mean-value '0 0 0 256' \
+--model-input yolov3.json \
+--model-data yolov3.data \
+--dtype quantized
+```
+
+caused errors:
+```
+sudo apt install libjpeg9-dev
 ```
