@@ -26,6 +26,9 @@ There are two opportunities:
 ```
 docker pull numbqq/npu-sdk:latest
 ```
+```
+docker run -it --name npu-sdk -v <model path>:/model --privileged  --cap-add SYS_ADMIN numbqq/npu-sdk
+```
 
 2. Build own image with latest version (6.4.4.3) (not tried)
 
@@ -37,7 +40,7 @@ tensorflow=2.0.0 -> tensorflow=2.0.0a0
 cd aml_npu_sdk_6.4.4.3 && docker build -t aml:0.1 .
 ```
 ```
-docker run -it --name npu-sdk -v ~/model:/model --privileged  --cap-add SYS_ADMIN numbqq/npu-sdk
+docker run -it --name khadas -v ~/model:/model --privileged  --cap-add SYS_ADMIN aml
 ```
 
 Some DOCKER tips:
