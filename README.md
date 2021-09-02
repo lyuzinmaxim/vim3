@@ -57,6 +57,14 @@ docker rm {}
 # SDK workflow:
 
 ```
+cd /acuity-toolkit && ./bin/convertdarknet --net-input /model/yolov3.cfg \
+--weight-input /model/yolov3_24_feb_best.weights \
+--data-output yolov3.data \
+--net-output yolov3.json
+```
+
+
+```
 cd /acuity-toolkit && ./bin/convertdarknet --net-input /model/yolov3.cfg --weight-input /model/yolov3_24_feb_best.weights --data-output yolov3.data --net-output yolov3.json
 ```
 
