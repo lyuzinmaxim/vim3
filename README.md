@@ -95,7 +95,7 @@ Quantizing the model - output files: *.quantized*, *.data*
 --epochs 50
 ```
 Generating case files for inference
-
+https://hackersandslackers.com/multiple-versions-python-ubuntu/
 
 ```
 ./bin/ovxgenerator --model-input yolov3.json \
@@ -103,6 +103,7 @@ Generating case files for inference
 --channel-mean-value '0 0 0 256' \
 --reorder-channel '0 1 2' \
 --export-dtype quantized \
+--model-quantize yolov3.quantize \
 --optimize VIPNANOQI_PID0X88 \
 --viv-sdk ../bin/vcmdtools \
 --pack-nbg-unify
