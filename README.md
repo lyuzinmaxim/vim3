@@ -16,6 +16,21 @@ Download **.weights**-file
 ```
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1L94CcYcRD0tyju0PFxBRFfY4rBdJsYt1' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1L94CcYcRD0tyju0PFxBRFfY4rBdJsYt1" -O yolov3_24_feb_best.weights && rm -rf /tmp/cookies.txt 
 ```
+
+Or use officially (pjreddie)
+```
+wget https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg
+wget https://pjreddie.com/media/files/yolov3.weights
+```
+416x416 image
+```
+wget https://redcanoebrands.com/wp-content/uploads/2018/02/Womens-CBC74-WB-tshirt-416x416.jpg
+```
+608x608 image
+```
+wget https://v2.cimg.co/authors/21/5a65ac2ee2b6e.jpg
+```
+
 ```
 mkdir ~/model && cp ~/yolov3.cfg ~/model/ && cp ~/yolov3_24_feb_best.weights ~/model/
 ```
@@ -40,7 +55,7 @@ tensorflow=2.0.0 -> tensorflow=2.0.0a0
 cd aml_npu_sdk_6.4.4.3 && docker build -t khadas .
 ```
 ```
-docker run -it --name khadas -v ~/model:/model --privileged  --cap-add SYS_ADMIN khadas
+docker run -it --name khadas -v ~/model:/model ~/output:/output --privileged  --cap-add SYS_ADMIN khadas
 ```
 
 Some DOCKER tips:
@@ -65,7 +80,7 @@ Make an intermediate file with *.json* and *.data* format
 
 ```
 cd /acuity-toolkit && ./bin/convertdarknet --net-input /model/yolov3.cfg \
---weight-input /model/yolov3_24_feb_best.weights \
+--weight-input /model/yolov3.weights \
 --data-output yolov3.data \
 --net-output yolov3.json
 ```
@@ -121,6 +136,12 @@ Infere on ?image?
 --model-data yolov3.data \
 --dtype quantized
 ```
+
+Download from google drive
+```
+gdown https://drive.google.com/uc?id=
+```
+
 
 Extra materials:
 1. Here it's wrote, that should be used new version of SDK
