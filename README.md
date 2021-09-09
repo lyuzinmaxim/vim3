@@ -19,7 +19,7 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 
 Or use officially (pjreddie)
 ```
-wget https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg
+wget https://github.com/yan-wyb/darknet/blob/master/cfg/yolov3.cfg
 wget https://pjreddie.com/media/files/yolov3.weights
 ```
 416x416 image
@@ -55,7 +55,7 @@ tensorflow=2.0.0 -> tensorflow=2.0.0a0
 cd aml_npu_sdk_6.4.4.3 && docker build -t khadas .
 ```
 ```
-docker run -it --name khadas -v ~/model:/model ~/output:/output --privileged  --cap-add SYS_ADMIN khadas
+docker run -it --name khadas -v ~/model:/model --privileged  --cap-add SYS_ADMIN khadas
 ```
 
 Some DOCKER tips:
