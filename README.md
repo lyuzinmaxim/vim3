@@ -20,7 +20,7 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 Or use officially (pjreddie)
 ```
 wget https://github.com/yan-wyb/darknet/blob/master/cfg/yolov3.cfg
-wget https://pjreddie.com/media/files/yolov3.weights
+wget https://raw.githubusercontent.com/yan-wyb/darknet/master/cfg/yolov3.cfg
 ```
 416x416 image
 ```
