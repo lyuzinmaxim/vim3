@@ -167,8 +167,21 @@ vnn_yolov3.c:94:17: warning: ‘load_data’ defined but not used [-Wunused-func
   COMPILE /home/khadas/aml_npu_app/DDK_6.3.3.4/detect_library/model_code/detect_yolo_v3/yolo_v3.c
 make: Nothing to be done for 'all'.
 ```
+Compiling original 1-class yolo in aml_npu_app:
+```
+  COMPILE /home/khadas/aml_npu_app/DDK_6.3.3.4/detect_library/model_code/detect_yolo_v3/yolov3_process.c
+  COMPILE /home/khadas/aml_npu_app/DDK_6.3.3.4/detect_library/model_code/detect_yolo_v3/vnn_yolov3.c
+vnn_yolov3.c: In function ‘vnn_CreateYolov3’:
+vnn_yolov3.c:145:29: warning: unused variable ‘data’ [-Wunused-variable]
+  145 |     uint8_t *               data;
+      |                             ^~~~
+At top level:
+vnn_yolov3.c:94:17: warning: ‘load_data’ defined but not used [-Wunused-function]
+   94 | static uint8_t* load_data
+      |                 ^~~~~~~~~
+make: Nothing to be done for 'all'.
 
-
+```
 
 
 
