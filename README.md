@@ -76,6 +76,11 @@ docker start {container name} -i
 
 # SDK workflow:
 
+Clone actual repo
+```
+git clone https://gitlab.com/khadas/aml_npu_sdk.git
+```
+
 Make an intermediate file with *.json* and *.data* format
 
 ```
@@ -146,6 +151,25 @@ Remove write-protected files
 ```
 rm -f /path/to/file
 ```
+
+Compiling original 80-classes yolo in aml_npu_app:
+```
+COMPILE /home/khadas/aml_npu_app/DDK_6.3.3.4/detect_library/model_code/detect_yolo_v3/yolov3_process.c
+  COMPILE /home/khadas/aml_npu_app/DDK_6.3.3.4/detect_library/model_code/detect_yolo_v3/vnn_yolov3.c
+vnn_yolov3.c: In function ‘vnn_CreateYolov3’:
+vnn_yolov3.c:145:29: warning: unused variable ‘data’ [-Wunused-variable]
+  145 |     uint8_t *               data;
+      |                             ^~~~
+At top level:
+vnn_yolov3.c:94:17: warning: ‘load_data’ defined but not used [-Wunused-function]
+   94 | static uint8_t* load_data
+      |                 ^~~~~~~~~
+  COMPILE /home/khadas/aml_npu_app/DDK_6.3.3.4/detect_library/model_code/detect_yolo_v3/yolo_v3.c
+make: Nothing to be done for 'all'.
+```
+
+
+
 
 
 Extra materials:
