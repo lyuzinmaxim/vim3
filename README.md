@@ -142,6 +142,11 @@ Download from google drive
 gdown https://drive.google.com/uc?id=
 ```
 
+Remove write-protected files
+```
+rm -f /path/to/file
+```
+
 
 Extra materials:
 1. Here it's wrote, that should be used new version of SDK
