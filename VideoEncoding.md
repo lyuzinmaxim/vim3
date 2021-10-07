@@ -18,7 +18,7 @@ v4l2-ctl -d /dev/video0 --list-formats
 
 # Saving input raw video
 
-1. In format RGB
+In format RGB24
 ```
 gst-launch-1.0 v4l2src name=vsrc device=/dev/video0 num-buffers=100 ! video/x-raw,width=1920,height=1080,framerate=60/1,format=RGB ! filesink location=/tmp/test.rgb
 ```
@@ -27,32 +27,36 @@ And play it
 ffplay -f rawvideo -pixel_format rgb24 -video_size 1920x1080 /tmp/test.rgb
 
 ```
-2. In format YUY2
-```
-gst-launch-1.0 v4l2src name=vsrc device=/dev/video0 num-buffers=100 ! video/x-raw,width=1920,height=1080,framerate=60/1,format=YUY2 ! filesink location=.//test.yuy2
-```
-And play it
-```
-ffplay -f rawvideo -pixel_format yuyv422 -video_size 1920x1080 test.yuy2
 
-```
-3. In format UYVY
-```
-gst-launch-1.0 v4l2src name=vsrc device=/dev/video0 num-buffers=100 ! video/x-raw,width=1920,height=1080,framerate=60/1,format=UYVY ! filesink location=.//test.uyvy
-```
-And play it
-```
-ffplay -f rawvideo -pixel_format uyvy422 -video_size 1920x1080 test.uyvy
-```
-4. In format GRAY8
-```
-gst-launch-1.0 v4l2src name=vsrc device=/dev/video0 num-buffers=100 ! video/x-raw,width=1920,height=1080,framerate=30/1,format=GRAY8 ! filesink location=.//test.gr
-```
-And play it
-```
-ffplay -f rawvideo -pixel_format gray -video_size 1920x1080 test.gr
+<details><summary>In other formats:</summary>
 
-```
+   - In format YUY2
+      ```
+      gst-launch-1.0 v4l2src name=vsrc device=/dev/video0 num-buffers=100 ! video/x-raw,width=1920,height=1080,framerate=60/1,format=YUY2 ! filesink location=.//test.yuy2
+      ```
+      And play it
+      ```
+      ffplay -f rawvideo -pixel_format yuyv422 -video_size 1920x1080 test.yuy2
+
+      ```
+   - In format UYVY
+    ```
+    gst-launch-1.0 v4l2src name=vsrc device=/dev/video0 num-buffers=100 ! video/x-raw,width=1920,height=1080,framerate=60/1,format=UYVY ! filesink location=.//test.uyvy
+    ```
+    And play it
+    ```
+    ffplay -f rawvideo -pixel_format uyvy422 -video_size 1920x1080 test.uyvy
+    ```
+  - In format GRAY8
+    ```
+    gst-launch-1.0 v4l2src name=vsrc device=/dev/video0 num-buffers=100 ! video/x-raw,width=1920,height=1080,framerate=30/1,format=GRAY8 ! filesink location=.//test.gr
+    ```
+    And play it
+    ```
+    ffplay -f rawvideo -pixel_format gray -video_size 1920x1080 test.gr
+
+    ```
+</details>
 
 Using gstreamer
 ```
