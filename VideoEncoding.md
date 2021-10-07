@@ -2,7 +2,7 @@ There are some CLI commands for Khadas VIM3 Pro board video capturing (MIPI-CSI 
 
 # Setup and check
 
-Switch off physical IR-filter (in framebuffer mode CTRL+ALT+F1) 
+Switch off physical IR-filter (**in framebuffer mode CTRL+ALT+F1 only**) 
 ```
 v4l2_test –c 1 –p 0 –F 0 –f 0 –D 0 –R 1 –r 2 –d 2 –N 1000 –n 800 –x 0 –w 0 –e 1 –b /dev/fb0 -v /dev/video0  
 ```
@@ -15,3 +15,21 @@ or
 ```
 v4l2-ctl -d /dev/video0 --list-formats
 ```
+
+# Saving input raw video
+
+1. In format RGB
+```
+gst-launch-1.0 v4l2src name=vsrc device=/dev/video0 num-buffers=100 ! video/x-raw,width=1920,height=1080,framerate=60/1,format=RGB ! filesink location=/tmp/test.rgb
+```
+And play it
+```
+ffplay -f rawvideo -pixel_format rgb24 -video_size 1920x1080 /tmp/test.rgb
+
+```
+
+Using gstreamer
+```
+gst-launch-1.0 -v v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1,width=1280,height=720 ! filesink location=/tmp/test.avi sync=false
+```
+
