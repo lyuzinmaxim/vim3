@@ -15,6 +15,10 @@ or
 ```
 v4l2-ctl -d /dev/video0 --list-formats
 ```
+or (better)
+```
+v4l2-ctl --device /dev/video0 --all
+```
 
 # Saving input raw video
 
