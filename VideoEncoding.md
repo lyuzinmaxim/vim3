@@ -84,3 +84,4 @@ ffplay /tmp/test.avi
 
 1. https://wiki.videolan.org/YUV
 2. https://ffmpeg.org/pipermail/ffmpeg-devel/2007-May/035617.html
+3. http://trac.gateworks.com/wiki/linux/v4l2
