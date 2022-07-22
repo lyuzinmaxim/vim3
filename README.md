@@ -205,3 +205,6 @@ Extra materials:
 #https://forum.khadas.com/t/npu-sdk-6-4-4-3-release/12273/37
 2. sudo apt install libjpeg9-dev
 3. 
+
+
+DSI display
